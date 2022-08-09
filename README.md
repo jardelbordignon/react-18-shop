@@ -33,3 +33,11 @@
 8. use useTransition and useDeferedValue
     1. read items in local storage using useTransition
     2. change cartItems.lenght to transition effects
+
+9. deploy website on gitub pages
+    1. login github account
+    2. push code to github respository
+    3. yarn add gh-pages -D
+    4. package.json "homepage": "https://github_name.github.io/webapp_name",
+    5. add deployment script: "predeploy": "npm run build", "deploy": "gh-pages -d build",
+    6. yarn deploy
