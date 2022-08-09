@@ -5,6 +5,10 @@ export type ProductType = {
   image: string
 }
 
+export type CartItemType = ProductType & {
+  qty: number
+}
+
 export type DataType = {
   products: ProductType[]
 }

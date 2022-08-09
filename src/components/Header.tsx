@@ -1,4 +1,8 @@
-export function Header() {
+type Props = {
+	countCartItems: number
+}
+
+export function Header({ countCartItems }: Props) {
 	return (
 		<header className="row center block">
 			<div>
@@ -7,7 +11,12 @@ export function Header() {
 				</a>
 			</div>
 			<div>
-				<a href="#/">Cart</a> <a href="#/">Sign In</a>
+				{ !!countCartItems && (
+					<a href="#/">
+						Cart <button className="badge">{countCartItems}</button>{' '}
+					</a>
+				) }
+				<a href="#/">Sign In</a>
 			</div>
 		</header>			
 	)
