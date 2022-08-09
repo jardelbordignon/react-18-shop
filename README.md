@@ -41,3 +41,7 @@
     4. package.json "homepage": "https://github_name.github.io/webapp_name",
     5. add deployment script: "predeploy": "npm run build", "deploy": "gh-pages -d build",
     6. yarn deploy
+
+Tutorial https://www.youtube.com/watch?v=KK0B8AETwew
+
+Link app https://jardelbordignon.github.io/react-18-shop/
