@@ -25,3 +25,7 @@
     1. list items in cartItems
     2. calculate sub total
     3. show checkout button
+
+7. save cart items in local storage
+    1. save items in local storage on add and remove
+    2. useEffect to get items in localstorage

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import { Header } from "./components/Header"
 import { Main } from "./components/Main"
@@ -11,27 +11,35 @@ function App() {
   
   const onAdd = (product: ProductType) => {
     const exists = cartItems.find(item => item.id === product.id)
-    if (exists) {
-      setCartItems(cartItems.map(item => (
+
+    const items = exists 
+      ? cartItems.map(item => (
         item.id === product.id ? {...item, qty: ++item.qty} : item
-      )))
-    } else {
-      setCartItems([...cartItems, {...product, qty: 1}])
-    }
+      ))
+      : [...cartItems, {...product, qty: 1}]
+
+    setCartItems(items)
+    localStorage.setItem('cartItems', JSON.stringify(items))
   }
 
   const onRemove = (product: ProductType) => {
     const exists = cartItems.find(item => item.id === product.id)
     if (exists) {
-      if (exists.qty > 1) {
-        setCartItems(cartItems.map(item => (
+      const items = exists.qty > 1 
+        ? cartItems.map(item => (
           item.id === product.id ? {...item, qty: --item.qty} : item
-        )))
-      } else {
-        setCartItems(cartItems.filter(item => item.id !== product.id))
-      }
+        ))
+        : cartItems.filter(item => item.id !== product.id)
+
+      setCartItems(items)
+      localStorage.setItem('cartItems', JSON.stringify(items))
     }
   }
+
+  useEffect(() => {
+    const items = localStorage.getItem('cartItems')
+    if (items) setCartItems(JSON.parse(items))
+  }, [])
 
   return (
     <div className="App">
