@@ -43,7 +43,11 @@ function App() {
           onAdd={onAdd} 
           onRemove={onRemove} 
         />
-        <Basket />
+        <Basket
+          cartItems={cartItems} 
+          onAdd={onAdd} 
+          onRemove={onRemove} 
+        />
       </div>
     </div>
   );
