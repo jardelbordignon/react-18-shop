@@ -13,3 +13,7 @@
 3. create Main component
     1. create data.ts
     2. render product items
+
+4. create Product component
+    1. create product divs
+    2. pass props to product component

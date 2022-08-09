@@ -1,4 +1,4 @@
-export type Product = {
+export type ProductType = {
   id: string
   name: string
   price: number
@@ -6,5 +6,5 @@ export type Product = {
 }
 
 export type DataType = {
-  products: Product[]
+  products: ProductType[]
 }

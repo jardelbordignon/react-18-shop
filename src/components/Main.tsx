@@ -1,7 +1,8 @@
-import { Product } from "../types"
+import { ProductType } from "../types"
+import { Product } from "./Product"
 
 type Props = {
-  products: Product[]
+  products: ProductType[]
 }
 
 export function Main({ products }: Props) {
@@ -14,11 +15,7 @@ export function Main({ products }: Props) {
     <main className="block col-2">
       <h2>Products</h2>
       <div className="row">
-        { products.map(product => (
-          <div key={product.id}>
-            <div>{product.name}</div>
-          </div>
-        )) }
+        { products.map(product => <Product key={product.id} product={product} /> )}
       </div>
     </main>
 	)
