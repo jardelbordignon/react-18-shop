@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useDeferredValue, useEffect, useState, useTransition } from "react"
 
 import { Header } from "./components/Header"
 import { Main } from "./components/Main"
@@ -8,6 +8,8 @@ import { CartItemType, ProductType } from "./types"
 
 function App() {
   const [cartItems, setCartItems] = useState<CartItemType[]>([])
+  const countCartItems = useDeferredValue(cartItems.length)
+  const [isPending, startTransition] = useTransition()
   
   const onAdd = (product: ProductType) => {
     const exists = cartItems.find(item => item.id === product.id)
@@ -37,13 +39,17 @@ function App() {
   }
 
   useEffect(() => {
-    const items = localStorage.getItem('cartItems')
-    if (items) setCartItems(JSON.parse(items))
+    startTransition(() => {
+      const items = localStorage.getItem('cartItems')
+      if (items) setCartItems(JSON.parse(items))
+    })
   }, [])
 
-  return (
+  return isPending
+    ? <div>Loading...</div>
+    : (
     <div className="App">
-      <Header countCartItems={cartItems.length} />
+      <Header countCartItems={countCartItems} />
       <div className="row">
         <Main 
           products={data.products} 

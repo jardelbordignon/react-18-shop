@@ -29,3 +29,7 @@
 7. save cart items in local storage
     1. save items in local storage on add and remove
     2. useEffect to get items in localstorage
+
+8. use useTransition and useDeferedValue
+    1. read items in local storage using useTransition
+    2. change cartItems.lenght to transition effects
